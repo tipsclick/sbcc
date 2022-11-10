@@ -27,28 +27,28 @@
                                 <div class="col col-5">
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control mx-2" id="name" name="name"
+                                        <input type="text" class="form-control" id="name" name="name"
                                             value="{{ $tenant->name }}" autofocus required>
                                     </div>
                                     <div class="form-group">
                                         <label for="cnic">CNIC</label>
-                                        <input type="number" class="form-control mx-2" id="cnic" name="cnic"
+                                        <input type="number" class="form-control" id="cnic" name="cnic"
                                             value="{{ $tenant->cnic }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="mobile">Mobile No.</label>
-                                        <input type="tel" class="form-control mx-2" id="mobile" name="mobile"
+                                        <input type="tel" class="form-control" id="mobile" name="mobile"
                                             value="{{ $tenant->mobile }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="business_name">Business Name</label>
-                                        <input type="text" class="form-control mx-2" id="business_name"
+                                        <input type="text" class="form-control" id="business_name"
                                             name="business_name" value="{{ $tenant->business_name }}" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="home_address">Home Address</label>
-                                        <input type="address" class="form-control mx-2" id="home_address"
+                                        <input type="address" class="form-control" id="home_address"
                                             name="home_address" value="{{ $tenant->home_address }}" required>
                                     </div>
                                     <div class="form-group">
@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="floor">Floor No.</label>
-                                        <select name="floor" id="floor" class="form-control mx-2" required>
+                                        <select name="floor" id="floor" class="form-control" required>
                                             <option>Select</option>
                                             <option value="1" @if ($tenant->floor == 1) selected @endif>1
                                             </option>
@@ -83,14 +83,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="is_active">Status</label>
-                                        <select name="is_active" id="is_active" class="form-control mx-2">
+                                        <select name="is_active" id="is_active" class="form-control">
                                             <option value="1" @if ($tenant->is_active == 1) selected @endif>Active</option>
                                             <option value="0" @if ($tenant->is_active == 0) selected @endif>InActive</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="details">Details</label>
-                                        <textarea class="form-control mx-2" id="details" name="details">{{ $tenant->details }}</textarea>
+                                        <textarea class="form-control" id="details" name="details">{{ $tenant->details }}</textarea>
                                     </div>
 
                                 </div>
@@ -98,12 +98,12 @@
 
                                     <div class="form-group">
                                         <label for="office_no">Office No.</label>
-                                        <input type="number" class="form-control mx-2" id="office_no" name="office_no"
+                                        <input type="number" class="form-control" id="office_no" name="office_no"
                                             value="{{ $tenant->office_no }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="service_charges">Service Charges</label>
-                                        <input type="number" class="form-control mx-2" id="service_charges"
+                                        <input type="number" class="form-control" id="service_charges"
                                             name="service_charges" value="{{ $tenant->service_charges }}" required>
                                     </div>
                                     <div class="form-group">
@@ -118,7 +118,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="monthly_rent">Monthly Rent</label>
-                                        <input type="number" class="form-control mx-2" id="monthly_rent"
+                                        <input type="number" class="form-control" id="monthly_rent"
                                             name="monthly_rent" value="{{ $tenant->monthly_rent }}" required>
                                     </div>
                                     <div class="form-group">
@@ -139,7 +139,7 @@
                                 </div>
                                 <div class="col col-5">
                                     <div class="form-group">
-                                        <button class="btn btn-primary btn-block mx-2 mt-3">Update</button>
+                                        <button class="btn btn-primary btn-block mt-3">Update</button>
                                     </div>
                                 </div>
                             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $employees = User::get();
-        return view('home',compact('employees'));
+        $tenants = Tenant::orderBy('floor','asc')->get();
+        return view('home',compact('employees', 'tenants'));
     }
 }

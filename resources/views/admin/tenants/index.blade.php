@@ -25,7 +25,7 @@
                         <div class="table-responsive">
                             <table class="table  table-hover">
                                 <thead>
-                                    <tr>
+                                    <tr class="bg-dark text-white">
                                         <th width="5%">Office</th>
                                         <th width="20%">Business Name</th>
                                         <th width="15%">Tenant Name</th>
@@ -44,8 +44,8 @@
                                         </tr>
                                         @foreach ($tenantsAll as $tenant)
                                             <tr
-                                                class="@if ($tenant->floor == 1) table-success @elseif($tenant->floor == 2) table-warning @elseif($tenant->floor == 3) table-info @elseif($tenant->floor == 4) table-danger @elseif($tenant->floor == 5) table-primary @endif">
-                                                <th scope="row">{{ $tenant->office_no }}</th>
+                                                >
+                                                <th scope="row" class="@if ($tenant->floor == 1) table-success @elseif($tenant->floor == 2) table-warning @elseif($tenant->floor == 3) table-info @elseif($tenant->floor == 4) table-danger @elseif($tenant->floor == 5) table-primary @endif">{{ $tenant->office_no }}</th>
                                                 <td>{{ $tenant->name }}</td>
                                                 <td>{{ $tenant->business_name }} </td>
                                                 <td>{{ env('CURRENCY') }} {{ number_format($tenant->service_charges) }}
@@ -66,6 +66,8 @@
                                                             class="feather icon-edit-2"></i> Modify</a>
                                                             <a class="dropdown-item" href="{{ route('admin.tenants.show', $tenant->id) }}"> <i
                                                             class="feather icon-eye"></i> View</a>
+                                                            <a class="dropdown-item" href="{{ route('admin.tenants.files', $tenant->id) }}"> <i
+                                                            class="feather icon-folder"></i> Documents</a>
                                                         </div>
                                                     </div>
                                                 </td>

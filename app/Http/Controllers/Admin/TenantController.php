@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tenant;
+use App\Models\TenantFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,7 @@ class TenantController extends Controller
      */
     public function index()
     {
-        $tenants = Tenant::get()->groupBy('floor');
+        $tenants = Tenant::orderBy('floor', 'asc')->get()->groupBy('floor');
         return view('admin.tenants.index', compact('tenants'));
     }
 
@@ -133,5 +134,44 @@ class TenantController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function files($id)
+    {
+        $tenant = Tenant::where('id', $id)->first();
+        $deleted = TenantFile::where('tenant_id', $id)->onlyTrashed()->get();
+        return view('admin.tenants.file', compact('tenant', 'deleted'));
+    }
+    
+    public function filesSave(Request $request, $id)
+    {
+        $request->validate([
+            'image'      => 'mimes:jpeg,png,jpg,pdf|max:2048'
+        ]);
+
+        // Upload Logo
+        if ($request->hasFile('image')) {
+            $filename = '';
+            if ($request->hasFile('image') && $request->image->isValid()) {
+                $filename = $id."_".date('d-m-Y')."_".time().'.'.$request->image->extension();
+                $request->image->move(public_path() . '/uploads/tenant', $filename);
+            }
+        }
+        $tenant             = new TenantFile;
+        $tenant->tenant_id  = $id;
+        $tenant->image      = $filename ? $filename : null;
+        $tenant->type       = $request->type;
+        $tenant->file_date  = $request->file_date;
+        $tenant->is_active  = $request->is_active ? $request->is_active : 0;
+        $tenant->added_by       = auth()->user()->id;
+        $tenant->save();
+
+        return redirect()->back()->with('message', 'New Document Updated');
+    }
+
+    public function filesDelete($id, $fid)
+    {
+        TenantFile::where('id',$fid)->where('tenant_id',$id)->delete();
+        return redirect()->back()->with('message', 'Document Deleted');
     }
 }
