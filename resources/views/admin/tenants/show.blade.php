@@ -84,15 +84,15 @@
                                         </tr>
                                         <tr>
                                             <th>Agreement Start Date</th>
-                                            <td>{{ $tenant->start_date->format('d M Y') }}</td>
+                                            <td>{{ $tenant->start_date ? $tenant->start_date->format('d M Y') : '' }}</td>
                                         </tr>
                                         <tr>
                                             <th>Agreement Revision Date</th>
-                                            <td>{{ $tenant->revision_date->format('d M Y') }}</td>
+                                            <td>{{ $tenant->revision_date ? $tenant->revision_date->format('d M Y') : '' }}</td>
                                         </tr>
                                         <tr>
                                             <th>Agreement Expiry Date</th>
-                                            <td>{{ $tenant->expiry_date->format('d M Y') }}</td>
+                                            <td>{{ $tenant->expiry_date ? $tenant->expiry_date->format('d M Y') : '' }}</td>
                                         </tr>
                                     </table>
                                     

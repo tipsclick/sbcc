@@ -32,23 +32,23 @@
                                     <div class="form-group">
                                         <label for="cnic">CNIC</label>
                                         <input type="number" class="form-control" id="cnic" name="cnic"
-                                            value="{{ old('cnic') }}" required>
+                                            value="{{ old('cnic') }}" >
                                     </div>
                                     <div class="form-group">
                                         <label for="mobile">Mobile No.</label>
                                         <input type="tel" class="form-control" id="mobile" name="mobile"
-                                            value="{{ old('mobile') }}" required>
+                                            value="{{ old('mobile') }}" >
                                     </div>
                                     <div class="form-group">
                                         <label for="business_name">Business Name</label>
                                         <input type="text" class="form-control" id="business_name"
-                                            name="business_name" value="{{ old('business_name') }}" required>
+                                            name="business_name" value="{{ old('business_name') }}" >
                                     </div>
 
                                     <div class="form-group">
                                         <label for="home_address">Home Address</label>
                                         <input type="address" class="form-control" id="home_address"
-                                            name="home_address" value="{{ old('home_address') }}" required>
+                                            name="home_address" value="{{ old('home_address') }}" >
                                     </div>
                                     
                                     <div class="form-group">
@@ -65,6 +65,7 @@
                                         <label for="floor">Floor No.</label>
                                         <select name="floor" id="floor" class="form-control" required>
                                             <option>Select</option>
+                                            <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -83,27 +84,27 @@
                                     <div class="form-group">
                                         <label for="office_no">Office No.</label>
                                         <input type="number" class="form-control" id="office_no" name="office_no"
-                                            value="{{ old('office_no') }}" required>
+                                            value="{{ old('office_no') }}" >
                                     </div>
                                     <div class="form-group">
                                         <label for="service_charges">Service Charges</label>
                                         <input type="number" class="form-control" id="service_charges"
-                                            name="service_charges" value="{{ old('service_charges') }}" required>
+                                            name="service_charges" value="{{ old('service_charges') }}" >
                                     </div>
                                     <div class="form-group">
                                         <label for="area">Area Sqft</label>
                                         <input type="number" class="form-control" id="area" name="area"
-                                            value="{{ old('area') }}" required>
+                                            value="{{ old('area') }}" >
                                     </div>
                                     <div class="form-group">
                                         <label for="rate">Rate per Per Square Feet</label>
                                         <input type="number" class="form-control" id="rate" name="rate"
-                                            value="{{ old('rate') }}" required>
+                                            value="{{ old('rate') }}" >
                                     </div>
                                     <div class="form-group">
                                         <label for="monthly_rent">Monthly Rent</label>
                                         <input type="number" class="form-control" id="monthly_rent"
-                                            name="monthly_rent" value="{{ old('monthly_rent') }}" required>
+                                            name="monthly_rent" value="{{ old('monthly_rent') }}" >
                                     </div>
 
                                     <div class="form-group">

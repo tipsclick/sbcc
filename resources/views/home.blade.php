@@ -18,22 +18,6 @@
             <div class="col-lg-12">
                 <div class="row">
 
-                    <div class="col-lg-2">
-                        <div class="card m-b-30">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="col-5">
-                                        <span class="action-icon badge badge-primary-inverse mr-0"><i
-                                                class="feather icon-user"></i></span>
-                                    </div>
-                                    <div class="col-7 text-right">
-                                        <h5 class="card-title font-14">Total Tenants</h5>
-                                        <h4 class="mb-0">{{ $tenants->count() }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     @foreach ($tenants->groupBy('floor') as $key => $tenantsAll)
                         <div class="col-lg-2">
                             <div class="card m-b-30">
@@ -41,7 +25,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-5">
                                             <span
-                                                class="action-icon badge @if ($key == 1) badge-success-inverse @elseif($key == 2) badge-warning-inverse @elseif($key == 3) badge-info-inverse @elseif($key == 4) badge-danger-inverse @elseif($key == 5) badge-primary-inverse @endif mr-0"><i
+                                                class="action-icon badge @if ($key == 1) badge-success-inverse @elseif($key == 2) badge-warning-inverse @elseif($key == 3) badge-info-inverse @elseif($key == 4) badge-danger-inverse @elseif($key == 5) badge-primary-inverse @elseif($key == 0) badge-dark-inverse @endif mr-0"><i
                                                     class="feather icon-user"></i></span>
                                         </div>
                                         <div class="col-7 text-right">
@@ -56,6 +40,8 @@
                                                     4th
                                                 @elseif($key == 5)
                                                     5th
+                                                @elseif($key == 0)
+                                                    Ground
                                                 @endif Floor
                                             </h5>
                                             <h4 class="mb-0">{{ $tenantsAll->count() }}</h4>
@@ -71,6 +57,24 @@
             <div class="col-lg-12 col-xl-3">
                 <!-- Start row -->
                 <div class="row">
+                    <!-- Start col -->
+                    <div class="col-lg-6 col-xl-12">
+                        <div class="card m-b-30">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-5">
+                                        <span class="action-icon badge badge-primary-inverse mr-0"><i
+                                                class="feather icon-user"></i></span>
+                                    </div>
+                                    <div class="col-7 text-right">
+                                        <h5 class="card-title font-14">Total Tenants</h5>
+                                        <h4 class="mb-0">{{ $tenants->count() }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End col -->
                     <!-- Start col -->
                     <div class="col-lg-6 col-xl-12">
                         <div class="card m-b-30">
@@ -128,35 +132,7 @@
                         </div>
                     </div>
                     <!-- End col -->
-                    <!-- Start col -->
-                    <div class="col-lg-6 col-xl-12">
-                        <div class="card m-b-30">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="col-5">
-                                        <span class="action-icon badge badge-warning-inverse mr-0"><i
-                                                class="feather icon-briefcase"></i></span>
-                                    </div>
-                                    <div class="col-7 text-right">
-                                        <h5 class="card-title font-14">Display Centers</h5>
-                                        <h4 class="mb-0">10/{{ $tenants->where('office_type', 'Display Center')->count() }}
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- <div class="card-footer">
-                            <div class="row align-items-center">
-                                <div class="col-8">
-                                    <span class="font-13">Updated 3 Day ago</span>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <span class="badge badge-success"><i class="feather icon-trending-up mr-1"></i>15%</span>
-                                </div>
-                            </div>
-                        </div> --}}
-                        </div>
-                    </div>
-                    <!-- End col -->
+                    
                 </div>
                 <!-- End row -->
             </div>

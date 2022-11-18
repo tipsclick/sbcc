@@ -69,6 +69,8 @@
                                         <label for="floor">Floor No.</label>
                                         <select name="floor" id="floor" class="form-control" required>
                                             <option>Select</option>
+                                            <option value="0" @if ($tenant->floor == 0) selected @endif>0
+                                            </option>
                                             <option value="1" @if ($tenant->floor == 1) selected @endif>1
                                             </option>
                                             <option value="2" @if ($tenant->floor == 2) selected @endif>2

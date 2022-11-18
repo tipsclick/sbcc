@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Tenant;
 use App\Models\TenantFile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Image;
 
 class TenantController extends Controller
 {
@@ -44,23 +44,24 @@ class TenantController extends Controller
         ]);
 
         $tenant                 = new Tenant;
-        $tenant->office_no      = $request->office_no;
-        $tenant->floor          = $request->floor;
+        $tenant->office_no      = $request->office_no ? $request->office_no : 0;
+        $tenant->floor          = $request->floor ? $request->floor : null ;
         $tenant->business_name  = $request->business_name;
         $tenant->name           = $request->name;
-        $tenant->cnic           = $request->cnic;
-        $tenant->mobile         = $request->mobile;
-        $tenant->area           = $request->area;
-        $tenant->monthly_rent   = $request->monthly_rent;
+        $tenant->cnic           = $request->cnic ? $request->cnic : null;
+        $tenant->mobile         = $request->mobile ? $request->mobile : null;
+        $tenant->area           = $request->area ? $request->area : 0;
+        $tenant->monthly_rent   = $request->monthly_rent ? $request->monthly_rent : 0;
         $tenant->home_address   = $request->home_address;
         $tenant->details        = $request->details;
         $tenant->added_by       = auth()->user()->id;
-        $tenant->rate           = $request->rate;
+        $tenant->rate           = $request->rate ? $request->rate : 0;
         $tenant->start_date       = $request->start_date;
         $tenant->revision_date    = $request->revision_date;
         $tenant->expiry_date      = $request->expiry_date;
         $tenant->office_type      = $request->office_type;
-        $tenant->service_charges  = $request->service_charges;
+        $tenant->service_charges  = $request->service_charges ? $request->service_charges : 0;
+        $tenant->is_active        = 1;
         $tenant->save();
         return redirect()->route('admin.tenants.index')->with('message', 'New Tenant Updated');
     }
@@ -149,17 +150,21 @@ class TenantController extends Controller
             'image'      => 'mimes:jpeg,png,jpg,pdf|max:2048'
         ]);
 
-        // Upload Logo
+        $tenant             = new TenantFile;
+        // Upload Document
         if ($request->hasFile('image')) {
-            $filename = '';
             if ($request->hasFile('image') && $request->image->isValid()) {
-                $filename = $id."_".date('d-m-Y')."_".time().'.'.$request->image->extension();
-                $request->image->move(public_path() . '/uploads/tenant', $filename);
+                $image = $request->file('image');
+                $filename = $id . "_" . date('d-m-Y') . "_" . time() . '.' . $image->getClientOriginalExtension();
+                $image_resize = Image::make($image->getRealPath())->widen(1000);
+                $upload = $image_resize->save('uploads/tenant/' . $filename);
+                if ($upload) {
+                    $tenant->image      = $filename ? $filename : null;
+                }
             }
         }
-        $tenant             = new TenantFile;
+        
         $tenant->tenant_id  = $id;
-        $tenant->image      = $filename ? $filename : null;
         $tenant->type       = $request->type;
         $tenant->file_date  = $request->file_date;
         $tenant->is_active  = $request->is_active ? $request->is_active : 0;
