@@ -42,6 +42,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('admin.offices.index')}}">
+                        <i class="feather icon-database"></i>
+                        <span>Offices</span>
+                    </a>
+                </li>
+                <li>
                     <a href="#">
                         <i class="feather icon-check-square"></i>
                         <span>Accounts</span>

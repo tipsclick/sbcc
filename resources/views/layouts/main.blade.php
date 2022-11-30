@@ -9,7 +9,7 @@
     <meta name="author" content="SHARA Solutions">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title> @yield('title') </title>
+    <title> {{ env('APP_NAME')}} </title>
     <!-- Fevicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
     <!-- Start CSS -->

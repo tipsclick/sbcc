@@ -45,6 +45,7 @@ Route::group(
         Route::post('roles/prmissions', 'RoleController@permissionsStore');
         Route::resource('roles', RoleController::class);
         Route::resource('tenants', TenantController::class);
+        Route::resource('offices', OfficeController::class);
         Route::get('tenants/{id}/files', 'TenantController@files')->name('tenants.files');
         Route::post('tenants/{id}/files', 'TenantController@filesSave')->name('tenants.files.store');
         Route::get('tenants/{id}/file/{fid}/delete', 'TenantController@filesDelete')->name('tenants.files.delete');
